@@ -17,31 +17,12 @@ let g:neobundle_default_git_protocol='https'
 NeoBundleFetch 'Shougo/neobundle.vim'
 " ↓こんな感じが基本の書き方
 NeoBundle 'nanotech/jellybeans.vim'
-
-" メソッド定義元へのジャンプ
-
-
-NeoBundle 'Shougo/neocomplcache'
-
-NeoBundle 'szw/vim-tags'
-
-" 自動で閉じる
-NeoBundle 'tpope/vim-endwise'
-" ログファイルを色づけしてくれる
-NeoBundle 'vim-scripts/AnsiEsc.vim'
+NeoBundle 'ekalinin/Dockerfile.vim'
 
 " ファイルオープンを便利に
 NeoBundle 'Shougo/unite.vim'
 " Unite.vimで最近使ったファイルを表示できるようにする
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'ekalinin/Dockerfile.vim'
-
-" 静的解析
-NeoBundle 'scrooloose/syntastic'
-
-" ドキュメント参照
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'yuku-t/vim-ref-ri'
 
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 """"""""""""""""""""""""""""""
@@ -82,12 +63,14 @@ set t_Co=256
 set expandtab "タブ入力を複数の空白入力に置き換える
 set tabstop=2 "画面上でタブ文字が占める幅
 set shiftwidth=2 "自動インデントでずれる幅
-set softtabstop=2 "連続した空白に対してタブキーやバックスペースキーでカーソルが 動く幅
+set softtabstop=2 "連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent "改行時に前の行のインデントを継続する
-set smartindent "改行時に入力された行の末尾に合わせて次の行のインデントを増減す る
+set smartindent "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
 syntax on
 colorscheme jellybeans
+
+
 
 nnoremap ss :<C-u>sp<CR>  "水平分割
 nnoremap sv :<C-u>vs<CR>  "垂直分割
