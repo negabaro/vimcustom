@@ -23,6 +23,8 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'Shougo/unite.vim'
 " Unite.vimで最近使ったファイルを表示できるようにする
 NeoBundle 'Shougo/neomru.vim'
+" vimでgit管理  
+NeoBundle 'tpope/vim-fugitive'
 
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 """"""""""""""""""""""""""""""
