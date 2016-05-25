@@ -26,6 +26,11 @@ NeoBundle 'Shougo/neomru.vim'
 " vimでgit管理  
 NeoBundle 'tpope/vim-fugitive'
 
+"カーソル移動すばやく
+NeoBundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_do_mapping = 0 "Disable default mappings
+nmap s <Plug>(easymotion-s2)
+
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 """"""""""""""""""""""""""""""
 " Unit.vimの設定
@@ -88,3 +93,13 @@ nnoremap sH <C-w>H
 nnoremap sr <C-w>r
 
 nnoremap sw <C-w>w
+
+"F3押すと動的番号生成
+nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
+"行番号固定
+set number
+
+"#####検索設定#####
+set ignorecase "大文字/小文字の区別なく検索する
+set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
+set wrapscan "検索時に最後まで行ったら最初に戻る
