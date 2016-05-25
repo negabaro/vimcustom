@@ -88,3 +88,5 @@ nnoremap sH <C-w>H
 nnoremap sr <C-w>r
 
 nnoremap sw <C-w>w
+
+"staging here test
