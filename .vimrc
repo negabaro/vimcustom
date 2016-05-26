@@ -58,7 +58,7 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " ファイルをtree表示してくれる
 NeoBundle 'scrooloose/nerdtree'
 
-" コメントON/OFFを手軽に実行
+" コメントON/OFFを手軽に実行(1行=gcc, 複数=shift+v -> gc)
 NeoBundle 'tomtom/tcomment_vim'
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
