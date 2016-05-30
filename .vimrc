@@ -21,7 +21,10 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 
 " ファイルオープンを便利に
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
+
 " Unite.vimで最近使ったファイルを表示できるようにする
+":Unite file_mru
 NeoBundle 'Shougo/neomru.vim'
 " vimでgit管理  
 NeoBundle 'tpope/vim-fugitive'
@@ -61,6 +64,17 @@ NeoBundle 'scrooloose/nerdtree'
 " コメントON/OFFを手軽に実行(1行=gcc, 複数=shift+v -> gc)
 NeoBundle 'tomtom/tcomment_vim'
 
+"Unite で git grep や hg grep を使うためのプラグイン
+NeoBundle 'lambdalisue/unite-grep-vcs'
+
+" 遅滞
+NeoBundleLazy 'lambdalisue/unite-grep-vcs', {
+    \ 'autoload': {
+    \    'unite_sources': ['grep/git', 'grep/hg'],
+    \}}
+
+
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -94,6 +108,27 @@ nnoremap sr <C-w>r
 
 nnoremap sw <C-w>w
 
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" nnoremap <silent> [unite]gg :<C-u>call <SID>unite_smart_grep()<CR>
+"   function! s:unite_smart_grep()
+"     if unite#sources#grep_git#is_available()
+"       Unite grep/git:. -buffer-name=search-buffer
+"     elseif unite#sources#grep_hg#is_available()
+"       Unite grep/hg:. -buffer-name=search-buffer
+"     else
+"       Unite grep:. -buffer-name=search-buffer
+"     endif
+"   endfunction
+
+" unite grepにhw(highway)を使う
+if executable('hw')
+  let g:unite_source_grep_command = 'hw'
+  let g:unite_source_grep_default_opts = '--no-group --no-color'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 "F3押すと動的番号生成
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 "行番号固定
@@ -103,3 +138,9 @@ set number
 set ignorecase "大文字/小文字の区別なく検索する
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
 set wrapscan "検索時に最後まで行ったら最初に戻る
+"clipboard共有はなんだか失敗
+" set clipboard=unnamed,autoselect
+" set clipboard=unnamedplus
+" set clipboard=autoselect,unnamedplus
+" set mouse=a
+
