@@ -1,4 +1,3 @@
-" neobundle settings {{{
 if has('vim_starting')
   set nocompatible
   " neobundle をインストールしていない場合は自動インストール
@@ -15,14 +14,27 @@ let g:neobundle_default_git_protocol='https'
 
 " neobundle#begin - neobundle#end の間に導入するプラグインを記載します。
 NeoBundleFetch 'Shougo/neobundle.vim'
+"vimproc入れないとunite grepできない。
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \ 'windows' : 'make -f make_mingw32.mak',
+      \ 'cygwin' : 'make -f make_cygwin.mak',
+      \ 'mac' : 'make -f make_mac.mak',
+      \ 'unix' : 'make -f make_unix.mak',
+      \ },
+      \ }
+
+"Load VimFiler
+NeoBundle 'Shougo/vimfiler.vim'
+" let g:vimfiler_safe_mode_by_default = 0
+" let g:vimfiler_as_default_explorer = 1
+nnoremap <Leader>n :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 " ↓こんな感じが基本の書き方
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
 
 " ファイルオープンを便利に
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
-
 " Unite.vimで最近使ったファイルを表示できるようにする
 ":Unite file_mru
 NeoBundle 'Shougo/neomru.vim'
@@ -64,17 +76,6 @@ NeoBundle 'scrooloose/nerdtree'
 " コメントON/OFFを手軽に実行(1行=gcc, 複数=shift+v -> gc)
 NeoBundle 'tomtom/tcomment_vim'
 
-"Unite で git grep や hg grep を使うためのプラグイン
-NeoBundle 'lambdalisue/unite-grep-vcs'
-
-" 遅滞
-NeoBundleLazy 'lambdalisue/unite-grep-vcs', {
-    \ 'autoload': {
-    \    'unite_sources': ['grep/git', 'grep/hg'],
-    \}}
-
-
-
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -92,7 +93,7 @@ syntax on
 colorscheme jellybeans
 
 
-
+"タブ周り
 nnoremap ss :<C-u>sp<CR>  "水平分割
 nnoremap sv :<C-u>vs<CR>  "垂直分割
 nnoremap sj <C-w>j
@@ -108,21 +109,13 @@ nnoremap sr <C-w>r
 
 nnoremap sw <C-w>w
 
+
 " grep検索
 nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" 候補を実行したら新しいタブでファイルを開きたい
+"#:Unite file -default-action=tabopen
 
-" nnoremap <silent> [unite]gg :<C-u>call <SID>unite_smart_grep()<CR>
-"   function! s:unite_smart_grep()
-"     if unite#sources#grep_git#is_available()
-"       Unite grep/git:. -buffer-name=search-buffer
-"     elseif unite#sources#grep_hg#is_available()
-"       Unite grep/hg:. -buffer-name=search-buffer
-"     else
-"       Unite grep:. -buffer-name=search-buffer
-"     endif
-"   endfunction
-
-" unite grepにhw(highway)を使う
+" unite grepにhw(highway)を使う(速度が速い!)
 if executable('hw')
   let g:unite_source_grep_command = 'hw'
   let g:unite_source_grep_default_opts = '--no-group --no-color'
@@ -131,8 +124,10 @@ endif
 
 "F3押すと動的番号生成
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
+nnoremap <F4> :<C-u>set number<CR>
+nnoremap <F5> :<C-u>set nonumber<CR>
 "行番号固定
-set number
+"set number
 
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
