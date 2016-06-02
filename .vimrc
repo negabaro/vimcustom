@@ -25,10 +25,27 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 "Load VimFiler
-NeoBundle 'Shougo/vimfiler.vim'
-" let g:vimfiler_safe_mode_by_default = 0
+NeoBundle 'Shougo/vimfiler'
+" Edit file by tabedit.
+let g:vimfiler_edit_action = 'tabopen'
 " let g:vimfiler_as_default_explorer = 1
+" let g:vimfiler_safe_mode_by_default = 0
 nnoremap <Leader>n :VimFiler -split -simple -winwidth=35 -no-quit<CR>
+
+" Use vimfiler instead of default filer.
+"
+" Open filer
+" noremap <silent> :tree :VimFiler -split -simple -winwidth=45 -no-quit
+" noremap <C-X><C-T> :VimFiler -split -simple -winwidth=45 -no-quit<ENTER>
+" Don't let <CR> enter the directory but let it open the directory
+" autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
+" Automatically open vimfiler on start
+"autocmd VimEnter * VimFilerExplorer
+" If no files are specified, open vimfiler
+"autocmd VimEnter * if !argc() | VimFiler | endif
+
+
+" let g:vimfiler_as_default_explorer = 1
 " ↓こんな感じが基本の書き方
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
