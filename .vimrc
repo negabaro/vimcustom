@@ -188,6 +188,12 @@ let g:rsenseUseOmniFunc = 1
 let g:auto_ctags = 1
 
 " 起動時に有効化
+" NeoBundle 'Shougo/neocomplete.vim', '', 'default'
+" call neobundle#config('neocomplete.vim', {
+"       \ 'lazy' : 1,
+"       \ 'autoload' : {
+"       \ 'commands' : 'NeoComplateEnable'
+"       \ }})
 let g:neocomplcache_enable_at_startup = 1
 
 " 大文字が入力されるまで大文字小文字の区別を無視する
@@ -220,3 +226,12 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 "######補完設定終わり##############
+
+"autocmd test 新しいファイル開くとputに指定した文字が入る
+autocmd BufNewFile * put ='ﾋﾞﾑｩ'
+"autocmd :NeoCompleteEnable
+" command :NeoCompleteEnable
+":NeoCompleteEnable
+
+nnoremap <F6> :<C-u>NeoCompleteEnable<CR>
+
