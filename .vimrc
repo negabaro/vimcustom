@@ -26,6 +26,8 @@ NeoBundle 'Shougo/vimproc', {
 
 "Load VimFiler
 NeoBundle 'Shougo/vimfiler'
+
+NeoBundle 'slim-template/vim-slim'
 " Edit file by tabedit.
 let g:vimfiler_edit_action = 'tabopen'
 " let g:vimfiler_as_default_explorer = 1
