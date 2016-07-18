@@ -27,6 +27,7 @@ NeoBundle 'Shougo/vimproc', {
 "Load VimFiler
 NeoBundle 'Shougo/vimfiler'
 
+NeoBundle "tpope/vim-endwise"
 NeoBundle 'slim-template/vim-slim'
 " Edit file by tabedit.
 let g:vimfiler_edit_action = 'tabopen'
@@ -71,9 +72,9 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'tpope/vim-fugitive'
 
 "カーソル移動すばやく
-NeoBundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_do_mapping = 0 "Disable default mappings
-nmap s <Plug>(easymotion-s2)
+ NeoBundle 'Lokaltog/vim-easymotion'
+ let g:EasyMotion_do_mapping = 0 "Disable default mappings
+" nmap s <Plug>(easymotion-s2)
 
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 """"""""""""""""""""""""""""""
@@ -121,25 +122,25 @@ set autoindent "改行時に前の行のインデントを継続する
 set smartindent "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
 syntax on
-colorscheme jellybeans
-"colorscheme hybrid 
+"colorscheme jellybeans
+colorscheme hybrid 
 
 
 "タブ周り
-nnoremap ss :<C-u>sp<CR>  "水平分割
-nnoremap sv :<C-u>vs<CR>  "垂直分割
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
+" nnoremap ss :<C-u>sp<CR>  "水平分割
+" nnoremap sv :<C-u>vs<CR>  "垂直分割
+" nnoremap sj <C-w>j
+" nnoremap sk <C-w>k
+" nnoremap sl <C-w>l
+" nnoremap sh <C-w>h
+" nnoremap sJ <C-w>J
+" nnoremap sK <C-w>K
+" nnoremap sL <C-w>L
+" nnoremap sH <C-w>H
+"
+" nnoremap sr <C-w>r
 
-nnoremap sr <C-w>r
-
-nnoremap sw <C-w>w
+" nnoremap sw <C-w>w
 
 
 " grep検索
@@ -230,7 +231,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 "######補完設定終わり##############
 
 "autocmd test 新しいファイル開くとputに指定した文字が入る
-autocmd BufNewFile * put ='ﾋﾞﾑｩ'
+"autocmd BufNewFile * put ='ﾋﾞﾑｩ'
 "autocmd :NeoCompleteEnable
 " command :NeoCompleteEnable
 ":NeoCompleteEnable
