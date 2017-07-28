@@ -239,4 +239,3 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 ":NeoCompleteEnable
 
 nnoremap <F6> :<C-u>NeoCompleteEnable<CR>
-
