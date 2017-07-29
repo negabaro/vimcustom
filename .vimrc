@@ -27,6 +27,8 @@ NeoBundle 'Shougo/vimproc', {
 "Load VimFiler
 NeoBundle 'Shougo/vimfiler'
 
+NeoBundle 'tpope/vim-rails', { 'autoload' : {
+      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
 NeoBundle "tpope/vim-endwise"
 NeoBundle 'slim-template/vim-slim'
 " Edit file by tabedit.
@@ -67,6 +69,18 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 
 " ファイルオープンを便利に
 NeoBundle 'Shougo/unite.vim'
+NeoBundleLazy 'basyura/unite-rails', {
+      \ 'depends' : 'Shougo/unite.vim',
+      \ 'autoload' : {
+      \   'unite_sources' : [
+      \     'rails/bundle', 'rails/bundled_gem', 'rails/config',
+      \     'rails/controller', 'rails/db', 'rails/destroy', 'rails/features',
+      \     'rails/gem', 'rails/gemfile', 'rails/generate', 'rails/git', 'rails/helper',
+      \     'rails/heroku', 'rails/initializer', 'rails/javascript', 'rails/lib', 'rails/log',
+      \     'rails/mailer', 'rails/model', 'rails/rake', 'rails/route', 'rails/schema', 'rails/spec',
+      \     'rails/stylesheet', 'rails/view'
+      \   ]
+      \ }}
 " Unite.vimで最近使ったファイルを表示できるようにする
 ":Unite file_mru
 NeoBundle 'Shougo/neomru.vim'
@@ -85,22 +99,22 @@ NeoBundle 'tpope/vim-fugitive'
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " バッファ一覧
-noremap <C-P> :Unite buffer<CR>
+"noremap <C-P> :Unite buffer<CR>
 " ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
+"noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
+"noremap <C-Z> :Unite file_mru<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+"noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+"au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+"au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 " ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+"au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+"au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
 " ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+"au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+"au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 """"""""""""""""""""""""""""""
 " ファイルをtree表示してくれる
 NeoBundle 'scrooloose/nerdtree'
@@ -110,6 +124,16 @@ NeoBundle 'tomtom/tcomment_vim'
 "自動補完
 NeoBundle 'Shougo/neocomplete.vim'
 
+NeoBundleLazy 'alpaca-tc/alpaca_tags', {
+      \ 'depends': 'Shougo/vimproc',
+      \ 'autoload' : {
+      \   'commands': ['TagsUpdate', 'TagsSet', 'TagsBundle']
+      \ }}
+
+
+
+" =============================================================
+"
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -200,21 +224,15 @@ let g:auto_ctags = 1
 "       \ 'commands' : 'NeoComplateEnable'
 "       \ }})
 let g:neocomplcache_enable_at_startup = 1
-
 " 大文字が入力されるまで大文字小文字の区別を無視する
 let g:neocomplcache_enable_smart_case = 1
-
 " _(アンダースコア)区切りの補完を有効化
 let g:neocomplcache_enable_underbar_completion = 1
-
 let g:neocomplcache_enable_camel_case_completion  =  1
-
 " 最初の補完候補を選択状態にする
 let g:neocomplcache_enable_auto_select = 1
-
 " ポップアップメニューで表示される候補の数
 let g:neocomplcache_max_list = 20
-
 " シンタックスをキャッシュするときの最小文字長
 let g:neocomplcache_min_syntax_length = 3
 
@@ -239,3 +257,6 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 ":NeoCompleteEnable
 
 nnoremap <F6> :<C-u>NeoCompleteEnable<CR>
+
+"NERDTreeを開く
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
