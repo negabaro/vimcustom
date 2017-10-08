@@ -38,6 +38,7 @@ let g:vimfiler_edit_action = 'tabopen'
 nnoremap <Leader>n :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'idanarye/vim-merginal'
 NeoBundle 'Shougo/vimshell'
 
@@ -118,6 +119,7 @@ let g:unite_enable_start_insert=1
 """"""""""""""""""""""""""""""
 " ファイルをtree表示してくれる
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " コメントON/OFFを手軽に実行(1行=gcc, 複数=shift+v -> gc)
 NeoBundle 'tomtom/tcomment_vim'
@@ -257,6 +259,21 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 ":NeoCompleteEnable
 
 nnoremap <F6> :<C-u>NeoCompleteEnable<CR>
+set number
 
 "NERDTreeを開く
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+"vimscript
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "★",
+    \ "Staged"    : "☆",
+    \ "Untracked" : "*",
+    \ "Renamed"   : "*",
+    \ "Unmerged"  : "*",
+    \ "Deleted"   : "死",
+    \ "Dirty"     : "*",
+    \ "Clean"     : "^",
+    \ 'Ignored'   : '@',
+    \ "Unknown"   : "x"
+    \ }
