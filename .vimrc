@@ -185,10 +185,19 @@ endif
 
 "F3押すと動的番号生成
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
-nnoremap <F4> :<C-u>set number<CR>
-nnoremap <F5> :<C-u>set nonumber<CR>
+"nnoremap <F4> :<C-u>set number<CR>
+"nnoremap <F5> :<C-u>set nonumber<CR>
+" set number
+function Setnumber()
+  if &number
+    setlocal nonumber
+  else
+    setlocal number
+  endif
+endfunction
+nnoremap <silent> <C-m> :call Setnumber()<CR>
 "行番号固定
-"set number
+set number
 
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
@@ -259,7 +268,6 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 ":NeoCompleteEnable
 
 nnoremap <F6> :<C-u>NeoCompleteEnable<CR>
-set number
 
 "NERDTreeを開く
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
