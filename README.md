@@ -1,8 +1,9 @@
 *first step
 
 ```
+cd ~
 git init
-git remote add origin https://github.com/tpope/vim-rails.git
+git remote add origin https://github.com/negabaro/vimcustom.git
 git pull origin master
 ```
 
