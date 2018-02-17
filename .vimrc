@@ -10,6 +10,17 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle'))
+
+
+"terraform code整形
+NeoBundle 'hashivim/vim-terraform'
+let g:terraform_fmt_on_save = 1
+
+"VIM中で修正されてる行の確認が可視化できる
+NeoBundle 'airblade/vim-gitgutter'
+nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
+
 let g:neobundle_default_git_protocol='https'
 
 " neobundle#begin - neobundle#end の間に導入するプラグインを記載します。
@@ -268,6 +279,41 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 ":NeoCompleteEnable
 
 nnoremap <F6> :<C-u>NeoCompleteEnable<CR>
+
+"コロンセミコロン入れ変え shift押さずに:になれる
+noremap ; :
+noremap : ;
+
+"window&tab移動のショートカットキー一覧
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+
+"window&tab移動のショートカットキー一覧終わり
+
 
 "NERDTreeを開く
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
