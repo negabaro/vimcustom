@@ -130,6 +130,7 @@ let g:unite_enable_start_insert=1
 """"""""""""""""""""""""""""""
 " ファイルをtree表示してくれる
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 "The Silver Searcherをvim中で使えるようにする
 NeoBundle 'rking/ag.vim'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
@@ -344,7 +345,8 @@ nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 :set wildignore+=log/**,tmp/**,vendor/**,.bundle/**,.git/**,node_modules/**
 
 "NERDTreeを開く
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
 
 "vimscript
 let g:NERDTreeIndicatorMapCustom = {
