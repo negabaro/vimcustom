@@ -334,6 +334,14 @@ nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :! git push origin<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
 
+"vimgrep shortcut(https://qiita.com/yuku_t/items/0c1aff03949cb1b8fe6b)
+nnoremap [q :cprevious<CR>   " 前へ
+nnoremap ]q :cnext<CR>       " 次へ
+nnoremap [Q :<C-u>cfirst<CR> " 最初へ
+nnoremap ]Q :<C-u>clast<CR>  " 最後へ
+
+" Rails 用 vimgrep の除外ディレクトリ
+:set wildignore+=log/**,tmp/**,vendor/**,.bundle/**,.git/**,node_modules/**
 
 "NERDTreeを開く
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
