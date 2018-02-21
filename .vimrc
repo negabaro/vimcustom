@@ -130,6 +130,8 @@ let g:unite_enable_start_insert=1
 """"""""""""""""""""""""""""""
 " ファイルをtree表示してくれる
 NeoBundle 'scrooloose/nerdtree'
+"The Silver Searcherをvim中で使えるようにする
+NeoBundle 'rking/ag.vim'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " コメントON/OFFを手軽に実行(1行=gcc, 複数=shift+v -> gc)
