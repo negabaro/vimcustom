@@ -222,6 +222,8 @@ set wrapscan "検索時に最後まで行ったら最初に戻る
 " set clipboard=unnamedplus
 " set clipboard=autoselect,unnamedplus
 " set mouse=a
+" clipboardコピーできるようにする(これだけだと成功)
+set clipboard=unnamed,autoselect
 
 "#############補完設定###############
 highlight Pmenu ctermbg=4
@@ -347,6 +349,9 @@ nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 "NERDTreeを開く
 "nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
+
+
+"Plugin 'mortonfox/nerdtree-ag'
 
 "vimscript
 let g:NERDTreeIndicatorMapCustom = {
