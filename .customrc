@@ -4,6 +4,8 @@
 # Ubuntu https://qiita.com/ryuchan00/items/022d4513ff72cc0eb783,brew install the_silver_searcher 
 #
 #function agvi(){
+#ex) aa -u root_path //現在ディレクトリから再帰的に検索
+#https://qiita.com/thermes/items/e1e0c94e2875df96921c
 function aa(){
   path=$(ag $* | peco | awk -F: '{printf  $1 " +" $2}'| sed -e 's/\+$//')
   if [ -n "$path" ]; then
