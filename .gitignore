@@ -1,5 +1,8 @@
 *
+!/vim-module/**
 !/vim-module/*.vim
+!/vim-module/**/*/*.vim
+!/vim-module/**/*.vim
 !/vim-module/
 !.vimrc
 !.customrc
