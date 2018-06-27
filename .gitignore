@@ -1,0 +1,7 @@
+*
+!/vim-module/*.vim
+!/vim-module/
+!.vimrc
+!.customrc
+!.gitignore
+!README.md

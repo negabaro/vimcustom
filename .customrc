@@ -1,0 +1,28 @@
+# agで検索した結果から選択し、ファイルを開く
+# 事前準備 peco,agをインストール
+# OSX brew install peco, brew install the_silver_searcher
+# Ubuntu https://qiita.com/ryuchan00/items/022d4513ff72cc0eb783,brew install the_silver_searcher
+#
+#function agvi(){
+#ex) aa -u root_path //現在ディレクトリから再帰的に検索
+#https://qiita.com/thermes/items/e1e0c94e2875df96921c
+function aa(){
+  path=$(ag $* | peco | awk -F: '{printf  $1 " +" $2}'| sed -e 's/\+$//')
+  if [ -n "$path" ]; then
+    echo "vim $path"
+    vim $path
+  fi
+}
+
+function gossh() {
+    command ssh -i ~/.ssh/blue2-dev.pem ubuntu@$1
+}
+
+#function aa(){
+#  command agvi -u %1
+#}
+
+alias gs="git status"
+alias gb="git branch"
+
+git config --global credential.helper 'cache --timeout=3600'
