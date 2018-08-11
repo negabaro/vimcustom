@@ -102,6 +102,7 @@ let g:vimfiler_edit_action = 'tabopen'
 " let g:vimfiler_safe_mode_by_default = 0
 nnoremap <Leader>n :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 
+" vimでgit管理
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'idanarye/vim-merginal'
@@ -132,8 +133,6 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 " Unite.vimで最近使ったファイルを表示できるようにする
 ":Unite file_mru
 NeoBundle 'Shougo/neomru.vim'
-" vimでgit管理
-NeoBundle 'tpope/vim-fugitive'
 
 "カーソル移動すばやく
  NeoBundle 'Lokaltog/vim-easymotion'
@@ -234,6 +233,29 @@ set t_Co=256 " iTerm2など既に256色環境なら無くても良い
 syntax enable " 構文に色を付ける
 
 
+"giti shortcut
+nnoremap <space>f :Unite giti<CR>
+nnoremap <space>fs :Unite giti/status<CR>
+nnoremap <space>fb :Unite giti/branch<CR>
+nnoremap <space>fl :Unite giti/log<CR>
+"nnoremap <space>gs :Gstatus<CR>
+
+" fugitive git bindings
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
 
 "F3押すと動的番号生成
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
