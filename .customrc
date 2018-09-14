@@ -27,7 +27,10 @@ alias gb="git branch"
 alias g='git'
 
 #https://qiita.com/ymm1x/items/a735e82244a877ac4d23
-alias gob='git branch -a | cut -b 3- | grep -v -- "->" | peco | sed -e "s%remotes/origin/%%" |  xargs git checkout'
+#--sort doesn't exist on git 1.9.1. (worked on 2.0.0)
+alias gob='git branch -a --sort=-authordate | cut -b 3- | grep -v -- "->" | grep -v "remotes/origin" |peco --query ""| xargs git checkout'
+alias gobr='git branch -a --sort=-authordate | cut -b 3- | grep -v -- "->" | peco --query "remotes/ "|    xargs git checkout'
+#alias gob='git branch -a --sort=-authordate | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !$c{$_}++' | peco | xargs git checkout'
 
 # https://qiita.com/Kuniwak/items/b711d6c3e402dfd9356b#1-7
 #alias LR='`git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/[^\/]*\/\(\S*\)/\1 \0/"`'
