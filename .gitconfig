@@ -1,0 +1,31 @@
+[alias]
+    p = !git push origin `git rev-parse --abbrev-ref HEAD`
+	o = checkout
+	b = checkout -b
+	c = commit -v
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[user]
+	name = negabaro
+	email = negabaro@gmail.com
+[http]
+	sslVerify = false
+[push]
+	default = matching
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	required = true
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+[credential]
+	helper = cache --timeout=3600
+[core]
+	excludesfile = /Users/sehwakim/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

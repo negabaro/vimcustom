@@ -24,5 +24,13 @@ function gossh() {
 
 alias gs="git status"
 alias gb="git branch"
+alias g='git'
+
+#https://qiita.com/ymm1x/items/a735e82244a877ac4d23
+alias gob='git branch -a | cut -b 3- | grep -v -- "->" | peco | sed -e "s%remotes/origin/%%" |  xargs git checkout'
+
+# https://qiita.com/Kuniwak/items/b711d6c3e402dfd9356b#1-7
+#alias LR='`git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/[^\/]*\/\(\S*\)/\1 \0/"`'
+#alias B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 
 git config --global credential.helper 'cache --timeout=3600'
