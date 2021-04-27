@@ -14,6 +14,8 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " neobundle#begin - neobundle#end の間に導入するプラグインを記載します。
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+"NeoBundle 'Shougo/neomru.vim'
+
 let g:neobundle_default_git_protocol='https'
 
 "terraform code整形
@@ -72,7 +74,7 @@ NeoBundle 'Yggdroot/indentLine'
 "
 "https://qiita.com/alpaca_taichou/items/056a4c42fe7a928973e6
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'taichouchou2/html5.vim'
+"NeoBundle 'taichouchou2/html5.vim'
 "NeoBundle 'othree/html5.vim'
 "NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'pangloss/vim-javascript'
@@ -80,7 +82,7 @@ NeoBundle 'pangloss/vim-javascript'
 " カラースキームmolokai
 NeoBundle 'tomasr/molokai'
 " ステータスラインの表示内容強化
-NeoBundle 'itchyny/lightline.vim'
+"NeoBundle 'itchyny/lightline.vim'
 
 
 
@@ -130,9 +132,6 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
 
-" Unite.vimで最近使ったファイルを表示できるようにする
-":Unite file_mru
-NeoBundle 'Shougo/neomru.vim'
 
 "カーソル移動すばやく
  NeoBundle 'Lokaltog/vim-easymotion'
